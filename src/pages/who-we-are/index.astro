@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ConstellationBg from "../../components/ConstellationBg.astro";
+import Kicker from "../../components/Kicker.astro";
+import CTABanner from "../../components/CTABanner.astro";
+---
+
+<BaseLayout
+  title="Who We Are"
+  description="RAM Advisory Group's foundation includes twenty years leading complex investigations into serious organised crime, alongside multi-agency and international coordination."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-deep-navy py-24 sm:py-28">
+    <ConstellationBg variant="dark" />
+    <div class="relative mx-auto max-w-4xl px-6 lg:px-8">
+      <p class="kicker text-light-steel">Who We Are</p>
+      <h1 class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
+        You're facing something that needs to be resolved properly — not guessed at, not left to sit.
+      </h1>
+      <p class="mt-6 font-sans text-lg text-light-steel">That's what RAM is for.</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+    <div class="grid gap-16 lg:grid-cols-3 lg:gap-20">
+      <div class="space-y-16 lg:col-span-2">
+        <div>
+          <Kicker>The Foundation</Kicker>
+          <p class="mt-4 font-sans text-base leading-relaxed text-ink">
+            RAM Advisory Group's foundation includes twenty years leading complex investigations into
+            serious organised crime — firearms, drug supply, human trafficking, fraud — alongside
+            multi-agency and international coordination with the National Crime Agency (NCA), the Drug
+            Enforcement Administration (DEA), and INTERPOL. That work included authorisation for the most
+            sensitive covert tactics available within UK policing — trust that was earned, not assumed.
+          </p>
+        </div>
+
+        <div>
+          <Kicker>What That Means For You</Kicker>
+          <p class="mt-4 font-sans text-base leading-relaxed text-ink">
+            The same discipline now works for you: finding what's true, cutting through what
+            isn't relevant, and giving you a clear basis to act — today's decision, and the ones after it.
+          </p>
+        </div>
+
+        <div>
+          <Kicker>Who You're Dealing With</Kicker>
+          <p class="mt-4 font-sans text-base leading-relaxed text-ink">
+            No layer of account managers or junior staff — if you're running this business yourself, you
+            deal with someone who's done the work directly, the same person from first
+            conversation to final report.
+          </p>
+          <p class="mt-4 font-sans text-base leading-relaxed text-ink">
+            Where a case calls for it, RAM draws on a trusted network of specialist partners — digital
+            forensics, surveillance, financial investigation — so the right expertise is applied, whatever
+            the case demands.
+          </p>
+          <p class="mt-6 font-display text-xl italic text-heading-navy">
+            Clarity, Confidence, Direction. What you walk away with, every time.
+          </p>
+        </div>
+      </div>
+
+      <aside class="space-y-8">
+        <div class="rounded-sm border border-hairline bg-pale-accent p-8">
+          <p class="font-display text-5xl font-bold text-heading-navy">20+</p>
+          <p class="mt-2 font-sans text-sm uppercase tracking-wide text-steel">
+            Years of specialist investigative experience
+          </p>
+        </div>
+        <div class="rounded-sm border border-hairline p-8">
+          <p class="font-sans text-sm font-semibold uppercase tracking-wide text-steel">Decorated Investigators</p>
+          <p class="mt-3 font-sans text-sm leading-relaxed text-ink">
+            Recognised for the standard of their work — not simply their years served.
+          </p>
+        </div>
+        <div class="rounded-sm border border-hairline p-8">
+          <p class="font-display text-lg font-bold text-heading-navy">Jonny Ramchurn</p>
+          <p class="mt-1 font-sans text-xs font-semibold uppercase tracking-wide text-steel">Director</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CTABanner
+    quote="You don't need to have all the answers before you call. You just need the question."
+    heading="Let's Start a Conversation"
+    body="A confidential conversation costs nothing and commits you to nothing — it's the fastest way to find out whether RAM can help."
+  />
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  stat: string;
+  caption: string;
+  source?: string;
+  light?: boolean;
+  class?: string;
+}
+
+const { stat, caption, source, light = false, class: className = "" } = Astro.props;
+---
+
+<div class={`border-l-2 ${light ? "border-light-steel" : "border-steel"} pl-5 ${className}`}>
+  <p class={`font-display text-4xl font-bold ${light ? "text-white" : "text-heading-navy"}`}>{stat}</p>
+  <p class={`mt-2 font-sans text-sm leading-relaxed ${light ? "text-light-steel" : "text-ink"}`}>{caption}</p>
+  {source && <p class={`mt-2 font-sans text-xs ${light ? "text-silver-grey" : "text-silver-grey"}`}>{source}</p>}
+</div>

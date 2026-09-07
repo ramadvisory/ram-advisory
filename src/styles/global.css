@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "@fontsource/source-serif-4/400.css";
+@import "@fontsource/source-serif-4/400-italic.css";
+@import "@fontsource/source-serif-4/600.css";
+@import "@fontsource/source-serif-4/700.css";
+
+@theme {
+  /* Brand palette — from RAM Advisory Group Website Developer Brief v1 */
+  --color-deep-navy: #16233f;
+  --color-heading-navy: #1b2a4a;
+  --color-steel: #5a7690;
+  --color-light-steel: #8fa6b8;
+  --color-silver-grey: #9aa3ac;
+  --color-pale-accent: #eef1f4;
+  --color-hairline: #d9d9d6;
+  --color-paper: #ffffff;
+  --color-ink: #232a33;
+
+  /* Fonts */
+  --font-serif-display: "Tex Gyre Termes", "Bitstream Charter", Georgia, "Times New Roman", serif;
+  --font-serif-body: "Source Serif 4", Utopia, Georgia, serif;
+  --font-sans: "Tex Gyre Heros", Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-serif-body);
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-serif-display);
+    color: var(--color-heading-navy);
+  }
+}
+
+@layer utilities {
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-steel);
+  }
+}

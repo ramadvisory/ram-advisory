@@ -1,0 +1,61 @@
+---
+import logoWhite from "../assets/logo-white.png";
+import { Image } from "astro:assets";
+import ConstellationBg from "./ConstellationBg.astro";
+
+const year = new Date().getFullYear();
+
+const pillars = [
+  { href: "/investigations/", label: "Investigations" },
+  { href: "/due-diligence-intelligence/", label: "Due Diligence & Intelligence" },
+  { href: "/risk-resilience/", label: "Risk & Resilience" },
+];
+---
+
+<footer class="relative overflow-hidden bg-deep-navy text-light-steel">
+  <ConstellationBg variant="dark" />
+  <div class="relative mx-auto max-w-6xl px-6 py-16 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-4">
+      <div class="lg:col-span-2">
+        <Image src={logoWhite} alt="RAM Advisory Group" width={240} height={127} class="h-14 w-auto" />
+        <p class="mt-6 max-w-sm font-display text-lg italic text-white">
+          Providing Clarity, Confidence and Direction in Complex Situations.
+        </p>
+      </div>
+
+      <div>
+        <p class="kicker text-light-steel">Services</p>
+        <ul class="mt-4 space-y-3 font-sans text-sm">
+          {pillars.map((p) => (
+            <li><a href={p.href} class="hover:text-white">{p.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p class="kicker text-light-steel">Get in Touch</p>
+        <ul class="mt-4 space-y-3 font-sans text-sm">
+          <li><a href="tel:+447919365173" class="hover:text-white">07919 365173</a></li>
+          <li><a href="mailto:contact@ramadvisorygroup.co.uk" class="hover:text-white">contact@ramadvisorygroup.co.uk</a></li>
+          <li><a href="/who-we-are/" class="hover:text-white">Who We Are</a></li>
+          <li><a href="/contact/" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 font-sans text-xs text-silver-grey sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} RAM Advisory Group. All rights reserved.</p>
+      <p class="flex gap-6">
+        <a href="/privacy-policy/" class="hover:text-white">Privacy Policy</a>
+        <button
+          type="button"
+          id="manage-cookie-preferences"
+          class="cursor-pointer hover:text-white"
+          onclick="window.dispatchEvent(new CustomEvent('cookiepreferences:open'))"
+        >
+          Manage Cookies
+        </button>
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ConstellationBg from "./ConstellationBg.astro";
+import Kicker from "./Kicker.astro";
+import StatBlock from "./StatBlock.astro";
+import IconBadge from "./IconBadge.astro";
+import CTABanner from "./CTABanner.astro";
+
+interface Stat {
+  stat: string;
+  caption: string;
+  source?: string;
+}
+
+interface OtherPillar {
+  href: string;
+  icon: "search" | "shield" | "radar";
+  title: string;
+  situation: string;
+}
+
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+  pillarNumber: string;
+  icon: "search" | "shield" | "radar";
+  eyebrow: string;
+  tagline: string;
+  situationParagraphs: string[];
+  stats: Stat[];
+  handledParagraph: string;
+  leftWithParagraph: string;
+  rightNow: string;
+  beyondThat: string;
+  economicsParagraph: string;
+  economicsSource?: string;
+  bookItems: string[];
+  closingLine: string;
+  otherPillars: OtherPillar[];
+}
+
+const {
+  metaTitle,
+  metaDescription,
+  pillarNumber,
+  icon,
+  eyebrow,
+  tagline,
+  situationParagraphs,
+  stats,
+  handledParagraph,
+  leftWithParagraph,
+  rightNow,
+  beyondThat,
+  economicsParagraph,
+  economicsSource,
+  bookItems,
+  closingLine,
+  otherPillars,
+} = Astro.props;
+---
+
+<BaseLayout title={metaTitle} description={metaDescription}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-deep-navy py-24 sm:py-28">
+    <ConstellationBg variant="dark" />
+    <div class="relative mx-auto max-w-4xl px-6 lg:px-8">
+      <div class="flex items-center gap-4">
+        <IconBadge icon={icon} size="lg" dark />
+        <div>
+          <p class="kicker text-light-steel">{pillarNumber} — {eyebrow}</p>
+          <h1 class="mt-1 font-display text-3xl font-bold text-white sm:text-4xl">{eyebrow}</h1>
+        </div>
+      </div>
+      <p class="mt-8 font-display text-2xl italic text-white sm:text-3xl">{tagline}</p>
+    </div>
+  </section>
+
+  <!-- The Situation -->
+  <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <Kicker>The Situation</Kicker>
+        <div class="mt-4 space-y-4 font-sans text-base leading-relaxed text-ink">
+          {situationParagraphs.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-1">
+        {stats.map((s) => <StatBlock stat={s.stat} caption={s.caption} source={s.source} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It's Handled / What You're Left With -->
+  <section class="bg-pale-accent py-20">
+    <div class="mx-auto max-w-6xl px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <Kicker>How It's Handled</Kicker>
+          <p class="mt-4 font-sans text-base leading-relaxed text-ink">{handledParagraph}</p>
+        </div>
+        <div>
+          <Kicker>What You're Left With</Kicker>
+          <p class="mt-4 font-sans text-base leading-relaxed text-ink">{leftWithParagraph}</p>
+
+          <div class="mt-8 grid gap-6 sm:grid-cols-2">
+            <div class="border-l-2 border-steel pl-4">
+              <p class="font-sans text-xs font-semibold uppercase tracking-wide text-steel">Right Now</p>
+              <p class="mt-2 font-sans text-sm text-ink">{rightNow}</p>
+            </div>
+            <div class="border-l-2 border-light-steel pl-4">
+              <p class="font-sans text-xs font-semibold uppercase tracking-wide text-steel">Beyond That</p>
+              <p class="mt-2 font-sans text-sm text-ink">{beyondThat}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Economics -->
+  <section class="mx-auto max-w-4xl px-6 py-20 lg:px-8">
+    <Kicker>The Economics</Kicker>
+    <p class="mt-4 font-display text-xl italic leading-relaxed text-heading-navy">{economicsParagraph}</p>
+    {economicsSource && <p class="mt-3 font-sans text-xs text-silver-grey">{economicsSource}</p>}
+  </section>
+
+  <!-- What You Can Book -->
+  <section class="border-y border-hairline bg-white py-20">
+    <div class="mx-auto max-w-6xl px-6 lg:px-8">
+      <Kicker>What You Can Book</Kicker>
+      <div class="mt-6 flex flex-wrap gap-3">
+        {bookItems.map((item) => (
+          <span class="rounded-sm border border-hairline px-4 py-2.5 font-sans text-sm text-heading-navy">
+            {item}
+          </span>
+        ))}
+      </div>
+      <p class="mt-8 font-display text-lg italic text-heading-navy">{closingLine}</p>
+    </div>
+  </section>
+
+  <CTABanner
+    quote="You don't need to have all the answers before you call. You just need the question."
+    buttonLabel="Start a Conversation"
+  />
+
+  <!-- Other pillars -->
+  <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+    <Kicker>Other Ways RAM Can Help</Kicker>
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      {otherPillars.map((p) => (
+        <a
+          href={p.href}
+          class="group flex items-start gap-4 rounded-sm border border-hairline p-6 transition-shadow hover:shadow-lg hover:shadow-heading-navy/5"
+        >
+          <IconBadge icon={p.icon} />
+          <div>
+            <p class="font-display text-lg font-bold text-heading-navy">{p.title}</p>
+            <p class="mt-1 font-sans text-sm text-ink">{p.situation}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

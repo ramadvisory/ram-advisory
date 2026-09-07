@@ -1,0 +1,332 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ConstellationBg from "../components/ConstellationBg.astro";
+import Kicker from "../components/Kicker.astro";
+import IconBadge from "../components/IconBadge.astro";
+import PillarCard from "../components/PillarCard.astro";
+import StatBlock from "../components/StatBlock.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
+import CTABanner from "../components/CTABanner.astro";
+import logoWhite from "../assets/logo-white.png";
+import { Image } from "astro:assets";
+
+const challenges = [
+  "A number in the accounts that doesn't add up.",
+  "Someone leaving — and taking more than their leaving date with them.",
+  "A senior hire who isn't quite who their CV said.",
+  "A supplier gone quiet at exactly the wrong moment.",
+  "A vulnerability nobody's spotted yet.",
+  "Something raised in confidence — and nobody's quite sure what happens next.",
+];
+
+const foundations = [
+  "Independent Investigation",
+  "Intelligence-Led Due Diligence",
+  "Risk Advice, Real Experience",
+];
+
+const process = [
+  { step: "01", label: "Understand" },
+  { step: "02", label: "Assess" },
+  { step: "03", label: "Analyse" },
+  { step: "04", label: "Advise" },
+  { step: "05", label: "Support" },
+];
+
+const valueBullets = [
+  "Independent, objective assessment",
+  "Twenty years of real investigative experience",
+  "Practical recommendations, not theory",
+  "Reliable information you can act on",
+  "Discretion with sensitive matters",
+  "Avoid unnecessary costs",
+  "Reduce exposure",
+  "Protect your reputation",
+  "Identify opportunities earlier",
+  "Decide with confidence",
+];
+
+const expectItems = [
+  { icon: "compass" as const, title: "Independent Perspective", copy: "Objective, unbiased assessment." },
+  { icon: "chat" as const, title: "Clear Communication", copy: "Findings you can put to use." },
+  { icon: "scale" as const, title: "Proportionate Approach", copy: "Tailored to your situation." },
+  { icon: "lock" as const, title: "Discretion", copy: "Sensitive matters handled with care." },
+  { icon: "target" as const, title: "Practical Outcomes", copy: "Advice built to support your next move." },
+  { icon: "hand" as const, title: "In Your Hands", copy: "You get the full picture; what you do with it is always your decision." },
+];
+
+const glanceItems = [
+  "Facts established",
+  "Risk understood",
+  "Decisions made with confidence",
+  "Vulnerabilities found before they cost you",
+];
+
+const testimonials = [
+  {
+    quote:
+      "I have no hesitation in recommending Jonny. He brings professionalism, integrity, experience, and good sense to everything he does, and he would be a strong asset in any role requiring sound judgement, ethical decision-making, and practical problem solving.",
+    name: "Ant Tenison",
+    role: "Investigative Solutions",
+    linkedin: "https://www.linkedin.com/in/anthony-tenison",
+  },
+  {
+    quote:
+      "Having worked extensively with Jonny I can say with confidence he is a great guy with a brilliant mind. When it comes to investigatory work he is second to none, especially with complex investigations.",
+    name: "Paul Brown",
+    role: "Brovin Investigation",
+    linkedin: "https://www.linkedin.com/in/paul-brown-121706383",
+  },
+  {
+    quote:
+      "I've known Jonny for 15 years and what stands out is how methodically he gets to the truth of a situation. He doesn't guess or assume — he investigates, tests, and builds a picture you can actually rely on before you make a decision.",
+    name: "Chris Schutrups",
+    role: "Founder, The Mortgage Hut",
+    linkedin: "https://www.linkedin.com/in/schutrups",
+  },
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="RAM Advisory Group is a UK boutique corporate investigations, intelligence and risk consultancy — providing Clarity, Confidence and Direction in complex situations."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-deep-navy py-28 sm:py-36">
+    <ConstellationBg variant="dark" />
+    <div class="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
+      <Image src={logoWhite} alt="RAM Advisory Group" width={420} height={223} class="mx-auto h-28 w-auto sm:h-32" />
+      <p class="kicker mt-10 text-light-steel">Investigations &middot; Intelligence &middot; Risk</p>
+      <h1 class="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
+        Providing Clarity, Confidence and Direction in Complex Situations
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl font-sans text-base leading-relaxed text-light-steel sm:text-lg">
+        You're facing something that needs to be resolved properly — not guessed at, not left to sit. RAM
+        Advisory Group is built on the track record of decorated investigators, applying twenty years of
+        real-world experience to help you establish facts, understand risk, and make decisions with
+        confidence. RAM works alongside your existing legal and accountancy advisers — adding the layer
+        they don't provide, alongside the work they already do.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/contact/"
+          class="w-full rounded-sm bg-white px-8 py-3.5 text-center font-sans text-sm font-semibold uppercase tracking-wider text-heading-navy transition-colors hover:bg-pale-accent sm:w-auto"
+        >
+          Start a Conversation
+        </a>
+        <a
+          href="#how-we-help"
+          class="w-full rounded-sm border border-white/40 px-8 py-3.5 text-center font-sans text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-white/10 sm:w-auto"
+        >
+          How We Help
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Challenge -->
+  <section class="mx-auto max-w-6xl px-6 py-24 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <Kicker>The Challenge</Kicker>
+        <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">
+          A question you can't yet answer — that's usually where it starts, long before anyone's calling
+          it a crisis.
+        </h2>
+        <p class="mt-6 font-sans text-base leading-relaxed text-ink">
+          Your situation might look different. The feeling's usually the same: you need to know, and
+          right now, you don't. You built this yourself. There's no compliance department to hand it to,
+          no legal team down the corridor — just you, and a decision that can't wait.
+        </p>
+        <p class="mt-4 font-sans text-base leading-relaxed text-ink">
+          That's the gap RAM exists to close — twenty years of real experience behind it.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {foundations.map((f) => (
+            <span class="rounded-sm border border-hairline bg-pale-accent px-4 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-steel">
+              {f}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <ul class="space-y-0 divide-y divide-hairline border-t border-hairline">
+        {challenges.map((c) => (
+          <li class="py-5 font-display text-lg italic leading-snug text-heading-navy">{c}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How We Help / Three Pillars -->
+  <section id="how-we-help" class="bg-pale-accent py-24">
+    <div class="mx-auto max-w-6xl px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <Kicker>How We Help</Kicker>
+        <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">
+          Three ways RAM can support the decision in front of you.
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <PillarCard
+          icon="search"
+          eyebrow="01 — Investigations"
+          title="Investigations"
+          situation="When you need to know what happened."
+          bullets={["Workplace & Conduct", "Fraud & Financial Irregularity", "Whistleblowing", "Corporate Espionage & Data Loss"]}
+          href="/investigations/"
+        />
+        <PillarCard
+          icon="shield"
+          eyebrow="02 — Due Diligence & Intelligence"
+          title="Due Diligence & Intelligence"
+          situation="When a decision carries risk you can't yet see."
+          bullets={["Senior Appointments", "Suppliers & Partners", "Transactions"]}
+          href="/due-diligence-intelligence/"
+        />
+        <PillarCard
+          icon="radar"
+          eyebrow="03 — Risk & Resilience"
+          title="Risk & Resilience"
+          situation="When you'd rather find the gap than discover it."
+          bullets={["Vulnerability & Exposure Assessment", "Insider Threat Assessment", "Executive Vulnerability Assessment"]}
+          href="/risk-resilience/"
+        />
+      </div>
+
+      <p class="mt-10 max-w-2xl font-sans text-sm text-steel">
+        These are the situations RAM sees most often. If yours doesn't fit neatly into one, that's still a
+        conversation worth having.
+      </p>
+
+      <div class="mt-16 border-t border-hairline pt-12">
+        <p class="max-w-2xl font-sans text-sm leading-relaxed text-ink">
+          This is the discipline behind every engagement, whatever the specific problem: understand the
+          situation, work out what matters, test it rigorously, advise clearly, and stay
+          involved for as long as it's useful.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-x-2 gap-y-6">
+          {process.map((p, i) => (
+            <>
+              <div class="flex items-center gap-3">
+                <span class="font-display text-2xl font-bold text-light-steel">{p.step}</span>
+                <span class="font-sans text-sm font-semibold uppercase tracking-wide text-heading-navy">{p.label}</span>
+              </div>
+              {i < process.length - 1 && (
+                <svg class="h-4 w-4 text-hairline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 12h16m0 0-6-6m6 6-6 6" />
+                </svg>
+              )}
+            </>
+          ))}
+        </div>
+        <p class="mt-8 font-display text-lg italic text-heading-navy">
+          Structure creates clarity. Clarity supports your decision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value -->
+  <section class="mx-auto max-w-6xl px-6 py-24 lg:px-8">
+    <Kicker>Why Work With RAM</Kicker>
+    <h2 class="mt-3 max-w-2xl font-display text-3xl font-bold sm:text-4xl">The value you get.</h2>
+
+    <div class="mt-12 grid gap-12 lg:grid-cols-3 lg:gap-16">
+      <StatBlock
+        class="lg:col-span-1"
+        stat="£132,000"
+        caption="The average cost of a bad hire at mid-manager level in the UK, once recruitment, disruption and replacement are counted. Checking this costs a fraction of that — it won't guarantee the right outcome, but it means deciding with real information instead of hope."
+        source="REC (Recruitment & Employment Confederation), 2025/26"
+      />
+
+      <ul class="grid grid-cols-1 gap-x-8 gap-y-3 font-sans text-sm text-ink sm:grid-cols-2 lg:col-span-2">
+        {valueBullets.map((v) => (
+          <li class="flex items-start gap-2">
+            <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel"></span>
+            {v}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- What You Can Expect -->
+  <section class="bg-pale-accent py-24">
+    <div class="mx-auto max-w-6xl px-6 lg:px-8">
+      <Kicker>What You Can Expect</Kicker>
+      <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">Practical. Independent. Tailored to you.</h2>
+      <p class="mt-6 max-w-2xl font-sans text-base leading-relaxed text-ink">
+        You're not looking for more information — you're looking for something you can act on, from
+        someone who treats your situation as seriously as you do. No two situations are quite the same,
+        so the approach isn't either.
+      </p>
+
+      <div class="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        {expectItems.map((item) => (
+          <div class="flex items-start gap-4">
+            <IconBadge icon={item.icon} />
+            <div>
+              <p class="font-sans text-base font-semibold text-heading-navy">{item.title}</p>
+              <p class="mt-1 font-sans text-sm text-ink">{item.copy}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- At a Glance -->
+  <section class="mx-auto max-w-6xl px-6 py-24 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <Kicker>At a Glance</Kicker>
+        <p class="mt-3 font-display text-5xl font-bold text-heading-navy">20+</p>
+        <p class="mt-1 font-sans text-sm uppercase tracking-wide text-steel">Years of specialist investigative experience</p>
+
+        <p class="mt-8 font-sans text-sm font-semibold uppercase tracking-wide text-steel">What You Get</p>
+        <ul class="mt-4 space-y-3">
+          {glanceItems.map((g) => (
+            <li class="flex items-start gap-2 font-sans text-base text-ink">
+              <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-steel"></span>
+              {g}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="flex items-center border-l-2 border-hairline pl-8">
+        <blockquote class="font-display text-2xl italic leading-snug text-heading-navy">
+          "The strongest decisions are rarely made with complete certainty. They are made with the best
+          understanding available."
+          <footer class="mt-4 font-sans text-xs font-semibold uppercase tracking-wider text-steel not-italic">
+            — RAM Advisory Group
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-pale-accent py-24">
+    <div class="mx-auto max-w-6xl px-6 lg:px-8">
+      <Kicker>Testimonials</Kicker>
+      <h2 class="mt-3 max-w-2xl font-display text-3xl font-bold sm:text-4xl">
+        What clients and colleagues say.
+      </h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {testimonials.map((t) => (
+          <TestimonialCard quote={t.quote} name={t.name} role={t.role} linkedin={t.linkedin} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    quote="You don't need to have all the answers before you call. You just need the question."
+    heading="Let's Start a Conversation"
+    body="A confidential conversation costs nothing and commits you to nothing — it's the fastest way to find out whether RAM can help."
+  />
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+---
+
+<div
+  id="cookie-banner"
+  class="fixed inset-x-0 bottom-0 z-50 translate-y-full bg-deep-navy text-light-steel shadow-[0_-4px_20px_rgba(0,0,0,0.25)] transition-transform duration-300 ease-out"
+  role="dialog"
+  aria-label="Cookie consent"
+  aria-hidden="true"
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-6 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+    <p class="font-sans text-sm">
+      We use cookies to make the Site work and, with your consent, to understand how visitors use it. See our
+      <a href="/privacy-policy/" class="underline hover:text-white">Privacy Policy</a> for details.
+    </p>
+    <div class="flex shrink-0 gap-3 font-sans text-sm">
+      <button
+        id="cookie-decline"
+        type="button"
+        class="rounded border border-white/30 px-4 py-2 hover:border-white hover:text-white"
+      >
+        Decline
+      </button>
+      <button
+        id="cookie-accept"
+        type="button"
+        class="rounded bg-white px-4 py-2 font-semibold text-deep-navy hover:bg-pale-accent"
+      >
+        Accept
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = "ram-cookie-consent";
+  const banner = document.getElementById("cookie-banner");
+
+  function show() {
+    if (!banner) return;
+    banner.classList.remove("translate-y-full");
+    banner.setAttribute("aria-hidden", "false");
+  }
+
+  function hide() {
+    if (!banner) return;
+    banner.classList.add("translate-y-full");
+    banner.setAttribute("aria-hidden", "true");
+  }
+
+  function setConsent(status: "accepted" | "declined") {
+    localStorage.setItem(STORAGE_KEY, status);
+    hide();
+    window.dispatchEvent(new CustomEvent("cookieconsent", { detail: { status } }));
+  }
+
+  document.getElementById("cookie-accept")?.addEventListener("click", () => setConsent("accepted"));
+  document.getElementById("cookie-decline")?.addEventListener("click", () => setConsent("declined"));
+
+  if (!localStorage.getItem(STORAGE_KEY)) {
+    show();
+  }
+
+  window.addEventListener("cookiepreferences:open", show);
+</script>

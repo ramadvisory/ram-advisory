@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: "light" | "dark";
+  class?: string;
+}
+
+const { variant = "light", class: className = "" } = Astro.props;
+
+const stroke = variant === "dark" ? "#8FA6B8" : "#9AA3AC";
+---
+
+<svg
+  class={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
+  viewBox="0 0 1000 1000"
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g fill="none" stroke={stroke} stroke-width="1" opacity="0.35">
+    <polyline points="860,40 900,170 780,320 810,470" />
+    <circle cx="860" cy="40" r="3.5" fill={stroke} stroke="none" />
+    <circle cx="900" cy="170" r="3.5" fill={stroke} stroke="none" />
+    <circle cx="780" cy="320" r="3.5" fill={stroke} stroke="none" />
+    <circle cx="810" cy="470" r="3.5" fill={stroke} stroke="none" />
+
+    <polyline points="60,720 120,860 40,960" />
+    <circle cx="60" cy="720" r="3.5" fill={stroke} stroke="none" />
+    <circle cx="120" cy="860" r="3.5" fill={stroke} stroke="none" />
+    <circle cx="40" cy="960" r="3.5" fill={stroke} stroke="none" />
+  </g>
+</svg>

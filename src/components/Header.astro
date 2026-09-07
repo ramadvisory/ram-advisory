@@ -1,0 +1,99 @@
+---
+import logoNavy from "../assets/logo-navy-transparent.png";
+import { Image } from "astro:assets";
+
+const navItems = [
+  { href: "/investigations/", label: "Investigations" },
+  { href: "/due-diligence-intelligence/", label: "Due Diligence & Intelligence" },
+  { href: "/risk-resilience/", label: "Risk & Resilience" },
+  { href: "/who-we-are/", label: "Who We Are" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-hairline bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 lg:px-8">
+    <a href="/" class="flex items-center gap-3">
+      <Image
+        src={logoNavy}
+        alt="RAM Advisory Group"
+        width={220}
+        height={117}
+        class="h-11 w-auto"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`font-sans text-[0.8rem] font-semibold uppercase tracking-wider transition-colors hover:text-heading-navy ${
+            currentPath === item.href ? "text-heading-navy" : "text-steel"
+          }`}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/contact/"
+        class="rounded-sm bg-heading-navy px-5 py-2.5 font-sans text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-deep-navy"
+      >
+        Contact
+      </a>
+    </nav>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="flex items-center justify-center rounded-sm border border-hairline p-2 lg:hidden"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="h-6 w-6 text-heading-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path id="icon-open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        <path id="icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden flex-col gap-1 border-t border-hairline bg-white px-6 py-4 lg:hidden"
+    aria-label="Primary mobile"
+  >
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class={`rounded-sm px-2 py-3 font-sans text-sm font-semibold uppercase tracking-wider ${
+          currentPath === item.href ? "text-heading-navy" : "text-steel"
+        }`}
+      >
+        {item.label}
+      </a>
+    ))}
+    <a
+      href="/contact/"
+      class="mt-2 rounded-sm bg-heading-navy px-4 py-3 text-center font-sans text-sm font-semibold uppercase tracking-wider text-white"
+    >
+      Contact
+    </a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  toggle?.addEventListener("click", () => {
+    const isHidden = menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden");
+    menu?.classList.toggle("flex");
+    iconOpen?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+    toggle?.setAttribute("aria-expanded", String(!!isHidden));
+  });
+</script>

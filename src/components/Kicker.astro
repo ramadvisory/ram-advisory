@@ -1,0 +1,12 @@
+---
+interface Props {
+  class?: string;
+  light?: boolean;
+}
+
+const { class: className = "", light = false } = Astro.props;
+---
+
+<p class={`kicker ${light ? "text-light-steel" : ""} ${className}`}>
+  <slot />
+</p>
